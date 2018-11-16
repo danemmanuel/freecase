@@ -4,6 +4,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastrar-cliente',
@@ -11,14 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./cadastrar-cliente.component.css']
 })
 export class CadastrarClienteComponent implements OnInit {
-  data = {
-    name: '',
-    telefone: ''
-  };
-
-  email = '';
   uid: any;
   itemList: AngularFireList<any>;
+  formCliente: FormGroup;
 
   constructor(
     public toastService: ToastService,
@@ -33,17 +29,26 @@ export class CadastrarClienteComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.toastService.showToasst('loolololo'));
-    console.log(this.data.name);
+    this.construirForm();
   }
 
-  insertCliente() {
-    this.itemList.push({
-      uid: this.uid,
-      name: this.data.name,
-      telefone: this.data.telefone
+  construirForm() {
+    this.formCliente = new FormGroup({
+      nome: new FormControl('', [Validators.required]),
+      telefone: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required])
     });
-
-    // this.router.navigate(['/clientes']);
+  }
+  insertCliente() {
+    console.warn(this.formCliente.controls.email);
+    if (!this.formCliente.controls.email.invalid) {
+      this.itemList.push({
+        uid: this.uid,
+        name: this.formCliente.value.nome,
+        telefone: this.formCliente.value.telefone,
+        email: this.formCliente.value.email
+      });
+      this.router.navigate(['/dashboard/clientes']);
+    }
   }
 }

@@ -1,6 +1,6 @@
 <section class="page_content">
   <div class="head_content">
-    <h2 class="title">Meus Clientes</h2>
+    <h2 class="title">Cadastrar Cliente</h2>
     <button class="return_btn" [routerLink]="['/dashboard/clientes']">
       Voltar
     </button>
@@ -8,25 +8,41 @@
 
   <div class="card">
     <div class="body">
-      <form action="">
-        <input
-          class="uk-input"
-          type="text"
-          placeholder="Nome Cliente"
-          name="name"
-          [(ngModel)]="data.name"
-        />
-        <input
-          class="uk-input"
-          type="text"
-          placeholder="Telefone"
-          name="telefone"
-          [(ngModel)]="data.telefone"
-        />
-
-        <button class="uk-button uk-button-primary" (click)="insertCliente()">
-          Submit
-        </button>
+      <form [formGroup]="formCliente" (ngSubmit)="insertCliente()">
+        <div class="row">
+          <div class="col-md-6">
+            <input
+              class="uk-input"
+              type="text"
+              placeholder="Nome Cliente"
+              name="name"
+              formControlName="nome"
+            />
+          </div>
+          <div class="col-md-6">
+            <input
+              class="uk-input"
+              type="text"
+              placeholder="Telefone"
+              name="telefone"
+              formControlName="telefone"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <input
+              type="text"
+              required
+              placeholder="Email"
+              name="email"
+              formControlName="email"
+              matInput
+              required
+            />
+          </div>
+        </div>
+        <button class="btn">Cadastrar</button>
       </form>
     </div>
   </div>

@@ -7,6 +7,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ClientesComponent } from './clientes.component';
 import { DetailsClienteComponent } from './details-cliente/details-cliente.component';
@@ -24,7 +25,8 @@ import { VerifyandgetloginComponent } from '../verifyandgetlogin/verifyandgetlog
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule
   ],
   declarations: [
     ClientesComponent,
