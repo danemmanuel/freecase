@@ -3,12 +3,18 @@
 
   <div class="card">
     <div class="body">
+      <input
+        matInput
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="Busque qualquer informação"
+      />
+
       <table
         mat-table
         #table
         [dataSource]="dataSource"
         matSort
-        aria-label="Elements"
+        aria-label="Clientes"
       >
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
