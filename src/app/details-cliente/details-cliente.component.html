@@ -1,0 +1,17 @@
+<app-verifyandgetlogin></app-verifyandgetlogin>
+
+<section class="page_content">
+	<div class="head_content">
+			<h1 class="title">Dados de {{data.name}} </h1>
+		<button class="return_btn" [routerLink]="['/dashboard/clientes']">
+			Voltar
+		</button>
+	</div>
+	
+
+	<div class="card">
+		<div class="body">
+		{{data.name}}, {{data.telefone}}
+		</div>
+	</div>
+</section>
