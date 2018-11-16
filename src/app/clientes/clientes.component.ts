@@ -60,6 +60,10 @@ export class ClientesComponent implements OnInit {
   onDelete(key) {
     this.itemList.remove(key);
   }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
 export interface Cliente {
   key: string;
