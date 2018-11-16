@@ -7,11 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'school';
-  
-  
 
   ngOnInit() {
-    var el = document.getElementById("overlay");
-    el.classList.remove("hidenn");
-   }
+    const el = document.getElementById('overlay');
+    el.classList.remove('hidenn');
+  }
 }

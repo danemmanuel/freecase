@@ -1,0 +1,33 @@
+<section class="page_content">
+  <div class="head_content">
+    <h2 class="title">Meus Clientes</h2>
+    <button class="return_btn" [routerLink]="['/dashboard/clientes']">
+      Voltar
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <form action="">
+        <input
+          class="uk-input"
+          type="text"
+          placeholder="Nome Cliente"
+          name="name"
+          [(ngModel)]="data.name"
+        />
+        <input
+          class="uk-input"
+          type="text"
+          placeholder="Telefone"
+          name="telefone"
+          [(ngModel)]="data.telefone"
+        />
+
+        <button class="uk-button uk-button-primary" (click)="insertCliente()">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

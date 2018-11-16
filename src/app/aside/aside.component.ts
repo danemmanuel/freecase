@@ -7,27 +7,25 @@ import { GetinfosService } from '../getinfos/getinfos.service';
   styleUrls: ['./aside.component.css']
 })
 export class AsideComponent implements OnInit {
+  constructor(private getinfosService: GetinfosService) {}
 
-  constructor(private getinfosService:GetinfosService) {  }
+  public dataUser: User;
 
-  public dataUser:User
-
-  changeDark(){
-    $('body').addClass("dark")
+  changeDark() {
+    $('body').addClass('dark');
   }
 
-  changeLight(){
-    $('body').removeClass("dark")
+  changeLight() {
+    $('body').removeClass('dark');
   }
 
   ngOnInit() {
-    this.dataUser = this.getinfosService.getinfos()
+    this.dataUser = this.getinfosService.getinfos();
   }
-
 }
 
 export interface User {
-  name:string;
-  email:string;
-  photoURL:string;
+  name: string;
+  email: string;
+  photoURL: string;
 }

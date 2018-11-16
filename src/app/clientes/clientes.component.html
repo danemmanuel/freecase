@@ -1,59 +1,115 @@
 <section class="page_content">
-		<div class="head_content">
-				<h1 class="title">Meus Clientes </h1>
-		</div>
+  <div class="head_content"><h1 class="title">Meus Clientes</h1></div>
 
-	<div class="card">
+  <div class="card">
+    <div class="body">
+      <table
+        mat-table
+        #table
+        [dataSource]="dataSource"
+        matSort
+        aria-label="Elements"
+      >
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+          <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+          <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+        </ng-container>
+        <ng-container matColumnDef="telefone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Telefone</th>
+          <td mat-cell *matCellDef="let row">{{ row.telefone }}</td>
+        </ng-container>
+        <ng-container matColumnDef="acao">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row">
+            <div id="hov">
+              <ul class="dropdown-content blue-text">
+                <li>
+                  <a
+                    (click)="clientesService.moreInfo(row.key)"
+                    class="green-text "
+                    ><i class="mdi mdi-eye"></i>Ver</a
+                  >
+                </li>
+                <li>
+                  <a
+                    (click)="clienteService.makeAction(row.key, 'editar')"
+                    class="yellow-text text-darken-2"
+                    ><i class="mdi mdi-account-edit"></i>Editar</a
+                  >
+                </li>
+                <li>
+                  <a (click)="onDelete(row.key)" class="red-text modal-trigger"
+                    ><i class="mdi mdi-delete"></i>Excluir</a
+                  >
+                </li>
+              </ul>
 
-		<div class="body">
-					  					  
-			<table class="row-border hover table striped">
-				<thead>
-					<tr>
-						<th>Cliente</th>
-						<th>Telefone</th>
-						<th>Email</th>
-					</tr>
-				</thead>
-			
-				<tbody>
-					<tr *ngFor="let item of clientesService.itemArray">
-							<!--<div *ngIf="item.uid === clientesService.myUid"></div>-->
-							<td *ngIf="item.uid === clientesService.myUid"> {{item.$key}} </td>
-							<td *ngIf="item.uid === clientesService.myUid"> {{item.name}} </td>
-							<td *ngIf="item.uid === clientesService.myUid"> {{item.telefone}} </td>
-							<td *ngIf="item.uid === clientesService.myUid">
-								<div id="hov">
-								<ul class = "dropdown-content blue-text">
-									<li><a (click)="clientesService.moreInfo(item.$key)" class="green-text "><i class="mdi mdi-eye"></i>Ver</a></li>
-									<li><a (click)="clienteService.makeAction(cliente.id, 'editar')" class="yellow-text text-darken-2"><i class="mdi mdi-account-edit"></i>Editar</a></li>
-									<li><a (click)="clientesService.onDelete(item.$key)" class="red-text modal-trigger"><i class="mdi mdi-delete"></i>Excluir</a></li>
-								</ul>
-					
-								<a class = "btn dropdown-button blue" id="dd" target="dropdowncliente.id" >
-									<i class="mdi mdi-pencil"></i>
-								</a>
-								</div>
-							</td>
-				
-					</tr>
-				
-				
-				</tbody>
-			
-			</table>
+              <a
+                class="btn dropdown-button blue"
+                id="dd"
+                target="dropdowncliente.id"
+              >
+                <i class="mdi mdi-pencil"></i>
+              </a>
+            </div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
 
-			
+      <mat-paginator #paginator [pageSizeOptions]="[5, 10, 15]">
+      </mat-paginator>
 
-		
-		</div>
-	</div>
-	<div class="fixed-action-btn">
-		<a [routerLink]="['/dashboard/clientes/cadastrar']" class="btn-floating btn-large green waves-effect waves-light ">
-			<i class="mdi mdi-account-multiple-plus"></i>
-		</a>
-	</div>
+      <!--
+        <table class="row-border hover table striped">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Telefone</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let cliente of clientes">
+              <td> {{cliente.$key}} </td>
+              <td> {{cliente.name}} </td>
+              <td> {{cliente.telefone}} </td>
+              <td>
+                <div id="hov">
+                  <ul class="dropdown-content blue-text">
+                    <li><a (click)="clientesService.moreInfo(cliente.$key)" class="green-text "><i class="mdi mdi-eye"></i>Ver</a></li>
+                    <li><a (click)="clienteService.makeAction(cliente.id, 'editar')" class="yellow-text text-darken-2"><i
+                          class="mdi mdi-account-edit"></i>Editar</a></li>
+                    <li><a (click)="clientesService.onDelete(cliente.$key)" class="red-text modal-trigger"><i class="mdi mdi-delete"></i>Excluir</a></li>
+                  </ul>
+
+                  <a class="btn dropdown-button blue" id="dd" target="dropdowncliente.id">
+                    <i class="mdi mdi-pencil"></i>
+                  </a>
+                </div>
+              </td>
+
+            </tr>
 
 
+          </tbody>
 
+        </table>
+      -->
+    </div>
+  </div>
+  <div class="fixed-action-btn">
+    <a
+      [routerLink]="['/dashboard/clientes/cadastrar']"
+      class="btn-floating btn-large green waves-effect waves-light "
+    >
+      <i class="mdi mdi-account-multiple-plus"></i>
+    </a>
+  </div>
 </section>
