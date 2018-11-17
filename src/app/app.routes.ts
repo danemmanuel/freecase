@@ -1,3 +1,4 @@
+import { TasksComponent } from './tasks/tasks.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomesiteComponent } from './homesite/homesite.component';
@@ -16,7 +17,11 @@ const routes: Routes = [
     path: 'dashboard/cliente/detalhes/:id',
     component: DetailsClienteComponent
   },
-  { path: 'dashboard/clientes/cadastrar', component: CadastrarClienteComponent }
+  {
+    path: 'dashboard/clientes/cadastrar',
+    component: CadastrarClienteComponent
+  },
+  { path: 'dashboard/tasks', component: TasksComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);
