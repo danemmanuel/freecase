@@ -23,6 +23,7 @@ import * as $ from 'jquery';
 import { DataTablesModule } from 'angular-datatables';
 import { TopbarComponent } from './topbar/topbar.component';
 import { ClientesModule } from './clientes/clientes.module';
+import { EventosModule } from './eventos/eventos.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { ClientesModule } from './clientes/clientes.module';
     BrowserAnimationsModule,
     DataTablesModule,
     ClientesModule,
-    TasksModule
+    TasksModule,
+    EventosModule
   ],
   exports: [RouterModule],
   providers: [LoginComponent],
