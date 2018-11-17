@@ -24,6 +24,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { TopbarComponent } from './topbar/topbar.component';
 import { ClientesModule } from './clientes/clientes.module';
 import { EventosModule } from './eventos/eventos.module';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ import { EventosModule } from './eventos/eventos.module';
     AngularFireStorageModule,
     FormsModule,
     routing,
+    AngularMaterialModule,
     BrowserAnimationsModule,
     DataTablesModule,
     ClientesModule,

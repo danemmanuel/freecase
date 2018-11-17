@@ -1,3 +1,4 @@
+import { EventosService } from './eventos.service';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -23,23 +24,10 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView
 } from 'angular-calendar';
+import { Evento } from './evento';
 import * as $ from 'jquery';
 import * as moment from 'moment';
 
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3'
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF'
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA'
-  }
-};
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.component.html',
@@ -47,11 +35,26 @@ const colors: any = {
   styleUrls: ['./eventos.component.scss']
 })
 export class EventosComponent implements OnInit {
+  colors: any = {
+    red: {
+      primary: '#ad2121',
+      secondary: '#FAE3E3'
+    },
+    blue: {
+      primary: '#1e90ff',
+      secondary: '#D1E8FF'
+    },
+    yellow: {
+      primary: '#e3bc08',
+      secondary: '#FDF1BA'
+    }
+  };
+  refresh: Subject<any> = new Subject();
   @ViewChild('modalContent')
   modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
-
+  evento: Evento;
   CalendarView = CalendarView;
   eventsInfo: any[];
   showAgenda = false;
@@ -65,55 +68,38 @@ export class EventosComponent implements OnInit {
     dataFormatada: string;
   };
 
-  refresh: Subject<any> = new Subject();
-
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
-  ];
+  events: CalendarEvent[];
 
   activeDayIsOpen = true;
-
-  constructor() {}
+  myUid: any;
+  constructor(private eventosService: EventosService) {}
 
   ngOnInit(): void {
+    this.myUid = localStorage.getItem('uid');
     $('li').removeClass('active');
     $('.list_menu li:nth-child(4)').addClass('active');
+    this.getEvents();
+  }
+
+  getEvents() {
+    this.events = [];
+    this.eventosService.getAllEvents().subscribe(events => {
+      events.forEach(evento => {
+        if (evento.uid === this.myUid) {
+          const eventoObj = {
+            title: evento.titulo,
+            start: new Date(evento.dataevento),
+            color: this.colors.blue,
+            meta: {
+              color: '#ad2121'
+            }
+          };
+          console.log(eventoObj);
+          this.events.push(eventoObj);
+        }
+      });
+      this.refresh.next();
+    });
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {

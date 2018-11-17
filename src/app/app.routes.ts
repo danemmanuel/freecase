@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { CadastrarClienteComponent } from './clientes/cadastrar-cliente/cadastrar-cliente.component';
 import { DetailsClienteComponent } from './clientes/details-cliente/details-cliente.component';
+import { CadastrarEventoComponent } from './eventos/cadastrar-evento/cadastrar-evento.component';
 
 const routes: Routes = [
   { path: '', component: HomesiteComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
     component: CadastrarClienteComponent
   },
   { path: 'dashboard/tasks', component: TasksComponent },
-  { path: 'dashboard/eventos', component: EventosComponent }
+  { path: 'dashboard/eventos', component: EventosComponent },
+  { path: 'dashboard/evento/cadastrar', component: CadastrarEventoComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);

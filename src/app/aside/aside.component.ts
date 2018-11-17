@@ -8,7 +8,7 @@ import { GetinfosService } from '../getinfos/getinfos.service';
 })
 export class AsideComponent implements OnInit {
   constructor(private getinfosService: GetinfosService) {}
-
+  isHidden = false;
   public dataUser: User;
 
   changeDark() {
