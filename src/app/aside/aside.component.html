@@ -1,76 +1,66 @@
 <div id="app_menu">
-		
   <nav class="menu">
-          
-      <div class="user_info">
-          freelacase
-          <!--
+    <div class="user_info">
+      freelacase
+      <!--
           <div class="image">
               <img src="{{dataUser.photoURL}}" width="55" height="55" alt="User">
           </div>
 
           <div class="info_container">
               <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bem vindo,  {{dataUser.name}} </div>
-              
+
               <div class="email"> {{dataUser.email}} </div>
           </div>
-         
+
         </div>
-       -->
-      <!--  
-       <div class="drop_menu">
-            <i class="mdi mdi-settings"></i>
-            <div class="men">
-            <div id="light" (click)="changeLight()">
-                Light
-            </div>
-            <div id="dark" (click)="changeDark()">
-                Dark
-            </div>
-            </div>
-        </div>
--->
+      -->
+      <!--
+        <div class="drop_menu">
+             <i class="mdi mdi-settings"></i>
+             <div class="men">
+             <div id="light" (click)="changeLight()">
+                 Light
+             </div>
+             <div id="dark" (click)="changeDark()">
+                 Dark
+             </div>
+             </div>
+         </div>
+      -->
+    </div>
 
-      </div>
-
-      <ul class="list_menu">
-          <li class="lolo">
-              <a [routerLink]="['/dashboard']" class="toggled waves-effect">
-                  <i class="mdi mdi-home"></i>
-                  <span>Visão Geral</span>
-              </a>
-          </li>
-          <li id="clientes">
-              <a [routerLink]="['/dashboard/clientes']" class="toggled waves-effect ">
-                  <i class="mdi mdi-account-multiple"></i>
-                  <span>Clientes</span>
-              </a>
-          </li>
-          <li>
-              <a href="./tarefas" class="toggled waves-effect ">
-                  <i class="mdi mdi-trello"></i>
-                  <span>Trello</span>
-              </a>
-          </li>
-          <li>
-              <a href="#" class="toggled waves-effect ">
-                  <i class="mdi mdi-calendar-clock"></i>
-                  <span>Calendário</span>
-              </a>
-          </li>
-          <li>
-              <a href="" class="toggled waves-effect ">
-                  <i class="mdi mdi-buffer"></i>
-                  <span>Brainblock</span>
-              </a>
-          </li>
-          <li>
-              <a href="" class="toggled waves-effect ">
-                  <i class="mdi mdi-file-document"></i>
-                  <span>Meus contratos</span>
-              </a>
-          </li>
-
-      </ul>
+    <ul class="list_menu">
+      <li class="lolo">
+        <a [routerLink]="['/dashboard']" class="toggled waves-effect">
+          <i class="mdi mdi-home"></i> <span>Visão Geral</span>
+        </a>
+      </li>
+      <li id="clientes">
+        <a [routerLink]="['/dashboard/clientes']" class="toggled waves-effect ">
+          <i class="mdi mdi-account-multiple"></i> <span>Clientes</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/dashboard/tasks']" class="toggled waves-effect ">
+          <i class="mdi mdi-trello"></i> <span>Tasks</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="toggled waves-effect ">
+          <i class="mdi mdi-calendar-clock"></i> <span>Calendário</span>
+        </a>
+      </li>
+      <li>
+        <a href="" class="toggled waves-effect ">
+          <i class="mdi mdi-buffer"></i> <span>Brainblock</span>
+        </a>
+      </li>
+      <li>
+        <a href="" class="toggled waves-effect ">
+          <i class="mdi mdi-file-document"></i> <span>Meus contratos</span>
+        </a>
+      </li>
+    </ul>
   </nav>
 </div>

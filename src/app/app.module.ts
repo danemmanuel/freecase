@@ -1,3 +1,4 @@
+import { TasksModule } from './tasks/tasks.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -41,7 +42,8 @@ import { ClientesModule } from './clientes/clientes.module';
     routing,
     BrowserAnimationsModule,
     DataTablesModule,
-    ClientesModule
+    ClientesModule,
+    TasksModule
   ],
   exports: [RouterModule],
   providers: [LoginComponent],
