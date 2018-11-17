@@ -2,14 +2,14 @@
   <div class="head_content"><h1 class="title">Visão geral</h1></div>
 
   <div class="container_boxs">
-    <div class="info_box back_purple">
+    <div [routerLink]="['/dashboard/clientes']" class="info_box back_purple">
       <div class="icon"><i class="mdi mdi-account-multiple"></i></div>
       <div class="text">
         <h3>Meus Clientes</h3>
         <span>125</span>
       </div>
     </div>
-    <div class="info_box back_blue">
+    <div [routerLink]="['/dashboard/tasks']" class="info_box back_blue">
       <div class="icon"><i class="mdi mdi-trello"></i></div>
       <div class="text">
         <h3>Minhas Tasks</h3>

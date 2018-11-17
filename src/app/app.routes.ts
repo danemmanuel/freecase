@@ -1,3 +1,4 @@
+import { EventosComponent } from './eventos/eventos.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -14,14 +15,15 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard/clientes', component: ClientesComponent },
   {
-    path: 'dashboard/cliente/detalhes/:id',
+    path: 'dashboard/cliente/:id',
     component: DetailsClienteComponent
   },
   {
     path: 'dashboard/clientes/cadastrar',
     component: CadastrarClienteComponent
   },
-  { path: 'dashboard/tasks', component: TasksComponent }
+  { path: 'dashboard/tasks', component: TasksComponent },
+  { path: 'dashboard/eventos', component: EventosComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);
