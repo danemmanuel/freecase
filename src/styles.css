@@ -193,9 +193,7 @@ body.dark {
 .dark .card .body table tbody tr:hover {
   background-color: rgba(245, 245, 245, 0.06);
 }
-.dark .card .body table tbody tr td {
-  border-top: 1px solid rgba(238, 238, 238, 0.12);
-}
+
 .dark table.striped > tbody > tr:nth-child(odd) {
   background-color: rgba(242, 242, 242, 0.05);
 }
@@ -216,6 +214,29 @@ body.dark {
 .dark .menu {
   background: #333;
 }
+.toggle_menu {
+  transform: rotate(0deg);
+  transition: 0.3s;
+  transition-delay: 0.4s;
+}
+body.hiden .toggle_menu {
+  transform: rotate(180deg);
+  transition: 0.3s;
+  transition-delay: 0.4s;
+}
+body.hiden .top_bar {
+  left: 0;
+  width: 100%;
+  transition: 0.3s;
+}
+body.hiden .page_content {
+  margin-left: 0;
+  transition: 0.3s;
+}
+body.hiden .menu {
+  transform: translateX(-100%);
+  transition: 0.3s;
+}
 .menu {
   position: fixed;
   width: 100%;
@@ -229,6 +250,7 @@ body.dark {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 11 !important;
 }
+
 .menu.show {
   visibility: visible;
   transition: 0.5s;
@@ -352,6 +374,7 @@ body.dark {
   margin-left: 300px;
   margin-top: 65px;
   padding: 30px;
+  transition: 0.3s;
 }
 .page_content .title {
   font-weight: 500;
@@ -384,6 +407,7 @@ body.dark {
 }
 .card .body table {
   max-width: 100%;
+  width: 100%;
   margin-bottom: 20px;
 }
 .card .body {
@@ -411,7 +435,7 @@ body.dark {
 }
 .card .body table tbody tr td {
   padding: 10px;
-  border-top: 1px solid #eee;
+
   flex: 1;
   position: relative;
 }
@@ -772,10 +796,12 @@ input[type='text']:disabled {
   background: #fff;
   width: calc(100vw - 300px);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
 }
 .top_bar .content {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
 .top_bar .user_infos {
   display: flex;
@@ -798,4 +824,29 @@ input[type='text']:disabled {
 .top_bar .user_infos .name i {
   color: #333;
   margin-left: 5px;
+}
+.cal-month-view .cal-header .cal-cell {
+  text-transform: capitalize !important;
+  font-weight: 300;
+}
+.mdi .mdi-plus {
+  margin: 0 !important;
+}
+.btn-fixed {
+  position: fixed !important;
+  bottom: 30px;
+  right: 30px;
+}
+.cal-month-view .cal-event {
+  width: 15px !important;
+  height: 15px !important;
+}
+.cal-month-view .cal-day-badge {
+  background-color: #dcdcdc;
+}
+.btn-fixed i {
+  font-size: 20px;
+}
+.mat-form-field {
+  width: 100%;
 }

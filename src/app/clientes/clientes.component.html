@@ -3,11 +3,14 @@
 
   <div class="card">
     <div class="body">
-      <input
-        matInput
-        (keyup)="applyFilter($event.target.value)"
-        placeholder="Busque qualquer informação"
-      />
+      <mat-form-field appearance="outline">
+        <mat-label>Buscar cliente</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter($event.target.value)"
+          placeholder="Busque qualquer informação"
+        />
+      </mat-form-field>
 
       <table
         mat-table
