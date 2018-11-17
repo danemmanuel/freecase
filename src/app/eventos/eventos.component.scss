@@ -1,0 +1,94 @@
+.cal-month-view .cal-day-badge {
+  background-color: #c5c5c5;
+}
+.cal-month-view .cal-open-day-events {
+  padding: 30px 15px;
+  padding-bottom: 0;
+  color: #333;
+  background-color: #ffffff;
+  box-shadow: none;
+  top: 0;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+[dragactiveclass] {
+  cursor: pointer;
+  padding: 8px 15px;
+  background: #f2f2f2;
+  border-radius: 50px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.cal-month-view .cal-open-day-events .cal-event {
+  top: 0 !important;
+  margin-right: 5px;
+}
+
+.cal-month-view .cal-event-title:hover {
+  text-decoration: none;
+}
+.cal-month-view .cal-event {
+  border-radius: 0;
+}
+.cal-month-view .cal-day-number {
+  opacity: 1;
+}
+.calendar .menu {
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  transition: 0.2s;
+}
+.btn:hover {
+  transition: 0.2s;
+}
+.cal-event {
+  padding: 0;
+  width: 15px;
+  height: 15px !important;
+  border-radius: 50% !important;
+}
+.menu_agenda {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.calendar {
+  padding: 30px 25px;
+  border-radius: 5px;
+  background: #fff;
+}
+.day_infos {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  & .event_info {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: #ededed;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 50px;
+    margin: 10px 0px 0px 10px;
+    cursor: pointer;
+    & .dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+  }
+}
+.event_title {
+}

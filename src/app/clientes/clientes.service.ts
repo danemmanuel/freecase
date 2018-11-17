@@ -35,7 +35,7 @@ export class ClientesService {
     });
   }
   moreInfo(key) {
-    this.router.navigate(['dashboard/cliente/detalhes/' + key]);
+    this.router.navigate(['dashboard/cliente/' + key]);
   }
 }
 

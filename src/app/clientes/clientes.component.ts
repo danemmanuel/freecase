@@ -1,11 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { ClientesService } from './clientes.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
-import { DataSource } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-clientes',
