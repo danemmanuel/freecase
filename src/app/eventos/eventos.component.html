@@ -1,39 +1,33 @@
 <section class="page_content">
-  <div class="head_content"><h1 class="title">Meus Clientes</h1></div>
-
   <div class="container">
     <div class="row">
-      <div class="col-md-12 col-lg-9 col-sm-12">
+      <div class="col-md-12 col-lg-12 col-sm-12">
         <div class="menu_agenda">
           <div class="btn-group">
+            <button mat-raised-button mwlCalendarToday [(viewDate)]="viewDate">
+              Hoje
+            </button>
             <button
-              mat-raised-button
-              class="btn btn-primary"
+              mat-icon-button
               mwlCalendarPreviousView
               [view]="view"
               [(viewDate)]="viewDate"
               (viewDateChange)="activeDayIsOpen = false"
             >
-              Mês Anterior
+              <i class="mdi mdi-chevron-left"></i>
             </button>
             <button
-              mat-raised-button
-              class="btn"
-              mwlCalendarToday
-              [(viewDate)]="viewDate"
-            >
-              Hoje
-            </button>
-            <button
-              mat-raised-button
-              class="btn btn-primary"
+              mat-icon-button
               mwlCalendarNextView
               [view]="view"
               [(viewDate)]="viewDate"
               (viewDateChange)="activeDayIsOpen = false"
             >
-              Próximo Mês
+              <i class="mdi mdi-chevron-right"></i>
             </button>
+            <h3 class="text-center">
+              {{ viewDate | calendarDate: view + 'ViewTitle':'pt' }}
+            </h3>
           </div>
         </div>
       </div>
@@ -41,9 +35,6 @@
 
     <div class="row">
       <div class="col-md-12 col-lg-12 col-sm-12 calendar">
-        <h3 class="text-center">
-          {{ viewDate | calendarDate: view + 'ViewTitle':'pt' }}
-        </h3>
         <div [ngSwitch]="view">
           <mwl-calendar-month-view
             *ngSwitchCase="CalendarView.Month"
@@ -101,4 +92,14 @@
       </div>
     </div>
   </div>
+  <button
+    [routerLink]="['/dashboard/evento/cadastrar']"
+    mat-fab
+    color="primary"
+    class="btn-fixed"
+    matTooltip="Cadastrar Evento"
+    [matTooltipPosition]="'left'"
+  >
+    <i class="mdi mdi-plus"></i>
+  </button>
 </section>
