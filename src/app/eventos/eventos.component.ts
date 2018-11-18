@@ -85,13 +85,14 @@ export class EventosComponent implements OnInit {
     this.events = [];
     this.eventosService.getAllEvents().subscribe(events => {
       events.forEach(evento => {
+        console.log(evento);
         if (evento.uid === this.myUid) {
           const eventoObj = {
             title: evento.titulo,
             start: new Date(evento.dataevento),
             color: this.colors.blue,
             meta: {
-              color: '#ad2121'
+              key: evento.key
             }
           };
           console.log(eventoObj);
@@ -116,10 +117,27 @@ export class EventosComponent implements OnInit {
   }
 
   showAgendaDia(event) {
+    console.log(event);
     this.showAgenda = true;
     this.modalData = event;
     moment.locale('pt-BR');
     const modalDataEvento = moment(this.modalData.start).format('LL');
     this.modalData.dataFormatada = modalDataEvento;
+  }
+
+  closeShowAgenda() {
+    this.showAgenda = false;
+  }
+
+  deleteEvento(key) {
+    this.eventosService.deleteEvento(key);
+    this.refreshAgenda();
+  }
+
+  refreshAgenda() {
+    this.events = [];
+    this.showAgenda = false;
+    this.activeDayIsOpen = false;
+    this.refresh.next();
   }
 }
