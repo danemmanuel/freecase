@@ -18,4 +18,8 @@ export class EventosService {
       }));
     });
   }
+
+  deleteEvento($key) {
+    this.itemList.remove($key);
+  }
 }
