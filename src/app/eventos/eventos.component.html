@@ -32,56 +32,55 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12 col-lg-12 col-sm-12 card">
-      <div [ngSwitch]="view">
-        <mwl-calendar-month-view
-          *ngSwitchCase="CalendarView.Month"
-          [viewDate]="viewDate"
-          [events]="events"
-          [refresh]="refresh"
-          [locale]="locale"
-          (dayClicked)="dayClicked($event.day)"
-          (eventTimesChanged)="eventTimesChanged($event)"
-        >
-        </mwl-calendar-month-view>
-        <mwl-calendar-week-view
-          *ngSwitchCase="CalendarView.Week"
-          [viewDate]="viewDate"
-          [events]="events"
-          [refresh]="refresh"
-          (eventClicked)="handleEvent('Clicked', $event.event)"
-          (eventTimesChanged)="eventTimesChanged($event)"
-        >
-        </mwl-calendar-week-view>
-        <mwl-calendar-day-view
-          *ngSwitchCase="CalendarView.Day"
-          [viewDate]="viewDate"
-          [events]="events"
-          [refresh]="refresh"
-          (eventClicked)="handleEvent('Clicked', $event.event)"
-          (eventTimesChanged)="eventTimesChanged($event)"
-        >
-        </mwl-calendar-day-view>
-      </div>
+  <div class="col-md-12 col-lg-12 col-sm-12 card">
+    <div [ngSwitch]="view">
+      <mwl-calendar-month-view
+        *ngSwitchCase="CalendarView.Month"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        [locale]="locale"
+        (dayClicked)="dayClicked($event.day)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+      >
+      </mwl-calendar-month-view>
+      <mwl-calendar-week-view
+        *ngSwitchCase="CalendarView.Week"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+      >
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view
+        *ngSwitchCase="CalendarView.Day"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)"
+      >
+      </mwl-calendar-day-view>
+    </div>
 
-      <div class="row" *ngIf="activeDayIsOpen">
-        <div class="day_infos">
-          <div
-            class="event_info"
-            *ngFor="let event of eventsInfo"
-            (click)="showAgendaDia(event)"
-          >
-            <span
-              class="dot"
-              [ngStyle]="{ 'background-color': event.color.primary }"
-            ></span>
-            <div class="event_title">{{ event.title }}</div>
-          </div>
+    <div class="row" *ngIf="activeDayIsOpen">
+      <div class="day_infos">
+        <div
+          class="event_info"
+          *ngFor="let event of eventsInfo"
+          (click)="showAgendaDia(event)"
+        >
+          <span
+            class="dot"
+            [ngStyle]="{ 'background-color': event.color.primary }"
+          ></span>
+          <div class="event_title">{{ event.title }}</div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="infosEvento" *ngIf="showAgenda">
     <div class="overlay" (click)="closeShowAgenda()" *ngIf="showAgenda"></div>
     <div class="content">

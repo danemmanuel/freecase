@@ -1,3 +1,4 @@
+import { AngularMaterialModule } from './../angular-material/angular-material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,6 +11,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { TasksComponent } from './tasks.component';
+import { CadastrarTaskComponent } from './cadastrar-task/cadastrar-task.component';
 
 @NgModule({
   imports: [
@@ -21,8 +23,9 @@ import { TasksComponent } from './tasks.component';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularMaterialModule
   ],
-  declarations: [TasksComponent]
+  declarations: [TasksComponent, CadastrarTaskComponent]
 })
 export class TasksModule {}

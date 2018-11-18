@@ -1,13 +1,21 @@
 <section class="page_content">
-  <div class="head_content"><h1 class="title">Minhas Tasks</h1></div>
+  <div class="head_content"><h1 class="title">Crie Tasks</h1></div>
 
-  <div class="card"><div class="body"></div></div>
-  <div class="fixed-action-btn">
-    <a
-      [routerLink]="['/dashboard/clientes/cadastrar']"
-      class="btn-floating btn-large green waves-effect waves-light "
-    >
-      <i class="mdi mdi-account-multiple-plus"></i>
-    </a>
+  <app-cadastrar-task></app-cadastrar-task>
+
+  <div class="tasks">
+    <div *ngFor="let block of tasks" class="item">
+      <div class="content">
+        <button
+          matTooltip="Concluir Task"
+          [matTooltipPosition]="'below'"
+          (click)="excluirBlock(block.key)"
+          mat-icon-button
+        >
+          <i class="mdi mdi-check-circle-outline"></i>
+        </button>
+        <h3>{{ block.titulo }}</h3>
+      </div>
+    </div>
   </div>
 </section>

@@ -72,52 +72,17 @@
 
       <mat-paginator #paginator [pageSizeOptions]="[5, 10, 15]">
       </mat-paginator>
-
-      <!--
-        <table class="row-border hover table striped">
-          <thead>
-            <tr>
-              <th>Cliente</th>
-              <th>Telefone</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr *ngFor="let cliente of clientes">
-              <td> {{cliente.$key}} </td>
-              <td> {{cliente.name}} </td>
-              <td> {{cliente.telefone}} </td>
-              <td>
-                <div id="hov">
-                  <ul class="dropdown-content blue-text">
-                    <li><a (click)="clientesService.moreInfo(cliente.$key)" class="green-text "><i class="mdi mdi-eye"></i>Ver</a></li>
-                    <li><a (click)="clienteService.makeAction(cliente.id, 'editar')" class="yellow-text text-darken-2"><i
-                          class="mdi mdi-account-edit"></i>Editar</a></li>
-                    <li><a (click)="clientesService.onDelete(cliente.$key)" class="red-text modal-trigger"><i class="mdi mdi-delete"></i>Excluir</a></li>
-                  </ul>
-
-                  <a class="btn dropdown-button blue" id="dd" target="dropdowncliente.id">
-                    <i class="mdi mdi-pencil"></i>
-                  </a>
-                </div>
-              </td>
-
-            </tr>
-
-
-          </tbody>
-
-        </table>
-      -->
     </div>
   </div>
-  <div class="fixed-action-btn">
-    <a
-      [routerLink]="['/dashboard/clientes/cadastrar']"
-      class="btn-floating btn-large green waves-effect waves-light "
-    >
-      <i class="mdi mdi-account-multiple-plus"></i>
-    </a>
-  </div>
 </section>
+
+<button
+  [routerLink]="['/dashboard/clientes/cadastrar']"
+  mat-fab
+  color="primary"
+  class="btn-fixed"
+  matTooltip="Cadastrar Cliente"
+  [matTooltipPosition]="'left'"
+>
+  <i class="mdi mdi-plus"></i>
+</button>
