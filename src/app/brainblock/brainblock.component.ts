@@ -10,8 +10,10 @@ import { BrainBlock } from './brainblock';
   styleUrls: ['./brainblock.component.scss']
 })
 export class BrainblockComponent implements OnInit {
+  showBlock = false;
   itemList: AngularFireList<any>;
   myUid: any;
+  blockModal: any[];
 
   constructor(
     public db: AngularFireDatabase,
@@ -41,5 +43,13 @@ export class BrainblockComponent implements OnInit {
 
   excluirBlock(key) {
     this.itemList.remove(key);
+  }
+  viewBlock(block) {
+    console.log(block);
+    this.blockModal = block;
+    this.showBlock = true;
+  }
+  hideBlock() {
+    this.showBlock = false;
   }
 }

@@ -28,11 +28,7 @@ const routes: Routes = [
   { path: 'dashboard/tasks', component: TasksComponent },
   { path: 'dashboard/eventos', component: EventosComponent },
   { path: 'dashboard/evento/cadastrar', component: CadastrarEventoComponent },
-  { path: 'dashboard/brainblocks', component: BrainblockComponent },
-  {
-    path: 'dashboard/brainblock/adicionar',
-    component: CadastrarBrainblockComponent
-  }
+  { path: 'dashboard/brainblocks', component: BrainblockComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);
