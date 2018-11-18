@@ -1,3 +1,4 @@
+import { BrainblockModule } from './brainblock/brainblock.module';
 import { TasksModule } from './tasks/tasks.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -47,7 +48,8 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     DataTablesModule,
     ClientesModule,
     TasksModule,
-    EventosModule
+    EventosModule,
+    BrainblockModule
   ],
   exports: [RouterModule],
   providers: [LoginComponent],
