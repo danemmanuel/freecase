@@ -37,6 +37,7 @@ export class CadastrarBrainblockComponent implements OnInit {
         titulo: this.formBlock.value.titulo,
         conteudo: this.formBlock.value.conteudo
       });
+      this.formBlock.reset();
     }
     this.refresh.next();
   }
