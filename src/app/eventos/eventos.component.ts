@@ -112,6 +112,10 @@ export class EventosComponent implements OnInit {
       } else {
         this.activeDayIsOpen = true;
         this.eventsInfo = events;
+        $('html,body').animate(
+          { scrollTop: document.body.scrollHeight },
+          'slow'
+        );
       }
     }
   }
