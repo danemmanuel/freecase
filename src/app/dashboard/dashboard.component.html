@@ -1,4 +1,4 @@
-<section class="page_content">
+<section class="page_content dashboard">
   <div class="head_content"><h1 class="title">Visão geral</h1></div>
 
   <div class="container_boxs">
@@ -16,14 +16,14 @@
         <span>12</span>
       </div>
     </div>
-    <div class="info_box back_green">
+    <div [routerLink]="['/dashboard/eventos']" class="info_box back_green">
       <div class="icon"><i class="mdi mdi-calendar-clock"></i></div>
       <div class="text">
         <h3>Meus Eventos</h3>
         <span>10</span>
       </div>
     </div>
-    <div class="info_box back_yellow">
+    <div [routerLink]="['/dashboard/brainblocks']" class="info_box back_yellow">
       <div class="icon"><i class="mdi mdi-buffer"></i></div>
       <div class="text">
         <h3>Minhas anotações</h3>
@@ -32,112 +32,16 @@
     </div>
   </div>
 
-  <div class="card">
-    <div class="header"><h2 class="title">MINHAS TASKS</h2></div>
-    <div class="body">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Task</th>
-            <th>Status</th>
-            <th>Manager</th>
-            <th>Progress</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Task A</td>
-            <td>Doing</td>
-            <td>John Doe</td>
-            <td>
-              <div class="progress">
-                <div
-                  class="progress-bar bg-green"
-                  role="progressbar"
-                  aria-valuenow="62"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 62%"
-                ></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Task B</td>
-            <td>Doing</td>
-            <td>John Doe</td>
-            <td>
-              <div class="progress">
-                <div
-                  class="progress-bar bg-green"
-                  role="progressbar"
-                  aria-valuenow="62"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 62%"
-                ></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Task C</td>
-            <td>Doing</td>
-            <td>John Doe</td>
-            <td>
-              <div class="progress">
-                <div
-                  class="progress-bar bg-green"
-                  role="progressbar"
-                  aria-valuenow="62"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 62%"
-                ></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Task D</td>
-            <td>Doing</td>
-            <td>John Doe</td>
-            <td>
-              <div class="progress">
-                <div
-                  class="progress-bar bg-green"
-                  role="progressbar"
-                  aria-valuenow="62"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 62%"
-                ></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Task E</td>
-            <td>Doing</td>
-            <td>John Doe</td>
-            <td>
-              <div class="progress">
-                <div
-                  class="progress-bar bg-green"
-                  role="progressbar"
-                  aria-valuenow="62"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style="width: 62%"
-                ></div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="head_content"><h1 class="title">Tasks Rápidas</h1></div>
+      <app-cadastrar-task></app-cadastrar-task>
+      <app-listar-tasks></app-listar-tasks>
+    </div>
+
+    <div class="col-md-8">
+      <div class="head_content"><h1 class="title">Minha Agenda</h1></div>
+      <app-listar-eventos></app-listar-eventos>
     </div>
   </div>
 </section>

@@ -1,3 +1,4 @@
+import { BrainblockModule } from './brainblock/brainblock.module';
 import { TasksModule } from './tasks/tasks.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,7 @@ import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { AsideComponent } from './aside/aside.component';
 import { routing } from './app.routes';
 
@@ -24,13 +25,14 @@ import { DataTablesModule } from 'angular-datatables';
 import { TopbarComponent } from './topbar/topbar.component';
 import { ClientesModule } from './clientes/clientes.module';
 import { EventosModule } from './eventos/eventos.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomesiteComponent,
     LoginComponent,
-    DashboardComponent,
     AsideComponent,
     TopbarComponent
   ],
@@ -47,7 +49,9 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     DataTablesModule,
     ClientesModule,
     TasksModule,
-    EventosModule
+    EventosModule,
+    BrainblockModule,
+    DashboardModule
   ],
   exports: [RouterModule],
   providers: [LoginComponent],

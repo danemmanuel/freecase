@@ -1,0 +1,45 @@
+<section class="page_content">
+  <div class="head_content"><h1 class="title">Crie anotações</h1></div>
+  <app-cadastrar-brainblock></app-cadastrar-brainblock>
+
+  <div class="brainblocks">
+    <div class="row">
+      <div
+        *ngFor="let block of brainBlocks"
+        class="col-sm-12 col-md-6 col-lg-4 col-xl-3 item"
+      >
+        <div class="content">
+          <h3>{{ block.titulo }}</h3>
+          <p>{{ block.conteudo }}</p>
+
+          <div class="action">
+            <button
+              matTooltip="Apagar Anotação"
+              [matTooltipPosition]="'below'"
+              (click)="excluirBlock(block.key)"
+              mat-icon-button
+            >
+              <i class="mdi mdi-delete"></i>
+            </button>
+            <button
+              matTooltip="Ver Anotação"
+              [matTooltipPosition]="'below'"
+              (click)="viewBlock(block)"
+              mat-icon-button
+            >
+              <i class="mdi mdi-eye"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="showBlock" *ngIf="showBlock">
+  <div class="overlay" (click)="hideBlock()"></div>
+  <div class="content">
+    <h3>{{ blockModal.titulo }}</h3>
+    <p>{{ blockModal.conteudo }}</p>
+  </div>
+</div>

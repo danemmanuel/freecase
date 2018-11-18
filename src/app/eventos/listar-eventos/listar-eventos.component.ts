@@ -1,4 +1,4 @@
-import { EventosService } from './eventos.service';
+import { EventosService } from '../eventos.service';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -24,17 +24,16 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView
 } from 'angular-calendar';
-import { Evento } from './evento';
+import { Evento } from '../evento';
 import * as $ from 'jquery';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-eventos',
-  templateUrl: './eventos.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./eventos.component.scss']
+  selector: 'app-listar-eventos',
+  templateUrl: './listar-eventos.component.html',
+  styleUrls: ['./listar-eventos.component.scss']
 })
-export class EventosComponent implements OnInit {
+export class ListarEventosComponent implements OnInit {
   colors: any = {
     red: {
       primary: '#ad2121',
@@ -76,8 +75,7 @@ export class EventosComponent implements OnInit {
 
   ngOnInit(): void {
     this.myUid = localStorage.getItem('uid');
-    $('li').removeClass('active');
-    $('.list_menu li:nth-child(4)').addClass('active');
+
     this.getEvents();
   }
 

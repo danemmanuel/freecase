@@ -23,9 +23,7 @@ export class CadastrarClienteComponent implements OnInit {
     public db: AngularFireDatabase
   ) {
     this.itemList = db.list('clientes');
-
     this.uid = localStorage.getItem('uid');
-    console.log('uid: ' + this.uid);
   }
 
   ngOnInit() {
@@ -40,7 +38,6 @@ export class CadastrarClienteComponent implements OnInit {
     });
   }
   insertCliente() {
-    console.warn(this.formCliente.controls.email);
     if (!this.formCliente.controls.email.invalid) {
       this.itemList.push({
         uid: this.uid,

@@ -1,13 +1,7 @@
 <section class="page_content">
-  <div class="head_content"><h1 class="title">Minhas Tasks</h1></div>
+  <div class="head_content"><h1 class="title">Crie Tasks</h1></div>
 
-  <div class="card"><div class="body"></div></div>
-  <div class="fixed-action-btn">
-    <a
-      [routerLink]="['/dashboard/clientes/cadastrar']"
-      class="btn-floating btn-large green waves-effect waves-light "
-    >
-      <i class="mdi mdi-account-multiple-plus"></i>
-    </a>
-  </div>
+  <app-cadastrar-task></app-cadastrar-task>
+
+  <app-listar-tasks></app-listar-tasks>
 </section>

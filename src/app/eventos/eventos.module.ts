@@ -10,6 +10,7 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { CadastrarEventoComponent } from './cadastrar-evento/cadastrar-evento.component';
+import { ListarEventosComponent } from './listar-eventos/listar-eventos.component';
 
 registerLocaleData(localePt);
 
@@ -26,6 +27,11 @@ registerLocaleData(localePt);
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  declarations: [EventosComponent, CadastrarEventoComponent]
+  declarations: [
+    EventosComponent,
+    CadastrarEventoComponent,
+    ListarEventosComponent
+  ],
+  exports: [EventosComponent, CadastrarEventoComponent, ListarEventosComponent]
 })
 export class EventosModule {}
