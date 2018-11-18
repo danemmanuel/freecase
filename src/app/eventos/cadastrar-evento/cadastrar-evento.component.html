@@ -14,7 +14,7 @@
         autocomplete="off"
       >
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <mat-form-field>
               <input
                 class="uk-input"
@@ -26,11 +26,9 @@
               />
             </mat-form-field>
           </div>
-        </div>
 
-        <div class="row">
           <div class="col-md-6">
-            <mat-form-field>
+            <mat-form-field (click)="picker.open()">
               <input
                 matInput
                 [matDatepicker]="picker"
