@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="col-md-12 col-lg-12 col-sm-12">
+    <div class="menu_agenda">
+      <div class="btn-group">
+        <button mat-raised-button mwlCalendarToday [(viewDate)]="viewDate">
+          Hoje
+        </button>
+        <button
+          mat-icon-button
+          mwlCalendarPreviousView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="activeDayIsOpen = false"
+        >
+          <i class="mdi mdi-chevron-left"></i>
+        </button>
+        <button
+          mat-icon-button
+          mwlCalendarNextView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="activeDayIsOpen = false"
+        >
+          <i class="mdi mdi-chevron-right"></i>
+        </button>
+        <h3 class="text-center">
+          {{ viewDate | calendarDate: view + 'ViewTitle':'pt' }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12 col-lg-12 col-sm-12 card">
+  <div [ngSwitch]="view">
+    <mwl-calendar-month-view
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      [locale]="locale"
+      (dayClicked)="dayClicked($event.day)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      *ngSwitchCase="CalendarView.Week"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="CalendarView.Day"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-day-view>
+  </div>
+
+  <div class="row" *ngIf="activeDayIsOpen">
+    <div class="day_infos">
+      <div
+        class="event_info"
+        *ngFor="let event of eventsInfo"
+        (click)="showAgendaDia(event)"
+      >
+        <span
+          class="dot"
+          [ngStyle]="{ 'background-color': event.color.primary }"
+        ></span>
+        <div class="event_title">{{ event.title }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="infosEvento" *ngIf="showAgenda">
+  <div class="overlay" (click)="closeShowAgenda()" *ngIf="showAgenda"></div>
+  <div class="content">
+    <div class="actions">
+      <button
+        mat-icon-button
+        matTooltip="Excluir Evento"
+        [matTooltipPosition]="'below'"
+        (click)="deleteEvento(modalData.meta.key)"
+      >
+        <i class="mdi mdi-delete"></i>
+      </button>
+      <button
+        mat-icon-button
+        matTooltip="Fechar"
+        [matTooltipPosition]="'below'"
+        (click)="closeShowAgenda()"
+      >
+        <i class="mdi mdi-close"></i>
+      </button>
+    </div>
+
+    <h2>{{ modalData.title }}</h2>
+    <p><i class="mdi mdi-calendar"></i> {{ modalData.dataFormatada }}</p>
+    <div class="municipios_list"></div>
+  </div>
+</div>

@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { TasksComponent } from './tasks.component';
 import { CadastrarTaskComponent } from './cadastrar-task/cadastrar-task.component';
+import { ListarTasksComponent } from './listar-tasks/listar-tasks.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { CadastrarTaskComponent } from './cadastrar-task/cadastrar-task.componen
     ReactiveFormsModule,
     AngularMaterialModule
   ],
-  declarations: [TasksComponent, CadastrarTaskComponent]
+  declarations: [TasksComponent, CadastrarTaskComponent, ListarTasksComponent],
+  exports: [TasksComponent, CadastrarTaskComponent, ListarTasksComponent]
 })
 export class TasksModule {}
