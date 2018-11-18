@@ -4,12 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ToastService {
+  constructor() {}
 
-  constructor() { }
-
-  showToasst(ee:string){
-    console.log(ee)
-    return "dsasds"
+  showToasst(ee: string) {
+    console.log(ee);
+    return 'dsasds';
   }
-
 }
