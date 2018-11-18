@@ -7,7 +7,7 @@ import { BrainBlock } from './brainblock';
 @Component({
   selector: 'app-brainblock',
   templateUrl: './brainblock.component.html',
-  styleUrls: ['./brainblock.component.css']
+  styleUrls: ['./brainblock.component.scss']
 })
 export class BrainblockComponent implements OnInit {
   itemList: AngularFireList<any>;
@@ -24,13 +24,22 @@ export class BrainblockComponent implements OnInit {
     $('li').removeClass('active');
     $('.list_menu li:nth-child(5)').addClass('active');
     this.myUid = localStorage.getItem('uid');
-    this.itemList = this.db.list('clientes');
+    this.itemList = this.db.list('anotacoes');
     this.loadBlocks();
   }
 
   loadBlocks() {
     this.brainBlockService.getAllBlocks().subscribe(blocks => {
-      this.brainBlocks = blocks;
+      this.brainBlocks = [];
+      blocks.forEach(key => {
+        if (key.uid === this.myUid) {
+          this.brainBlocks.push(key);
+        }
+      });
     });
+  }
+
+  excluirBlock(key) {
+    this.itemList.remove(key);
   }
 }

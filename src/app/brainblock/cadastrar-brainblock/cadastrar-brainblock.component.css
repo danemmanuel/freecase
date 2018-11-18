@@ -1,0 +1,7 @@
+.card.rounded {
+  padding: 5px;
+  border-radius: 9px;
+}
+.card.rounded .body {
+  padding: 15px;
+}

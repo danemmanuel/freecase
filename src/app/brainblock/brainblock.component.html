@@ -1,13 +1,34 @@
 <section class="page_content">
   <div class="head_content"><h1 class="title">Minha anotações</h1></div>
+  <app-cadastrar-brainblock></app-cadastrar-brainblock>
 
-  <div class="card"><div class="body"></div></div>
-  <div class="fixed-action-btn">
-    <a
-      [routerLink]="['/dashboard/clientes/cadastrar']"
-      class="btn-floating btn-large green waves-effect waves-light "
-    >
-      <i class="mdi mdi-account-multiple-plus"></i>
-    </a>
+  <div class="brainblocks">
+    <div class="row">
+      <div
+        *ngFor="let block of brainBlocks"
+        class="col-sm-12 col-md-6 col-lg-4 col-xl-3 item"
+      >
+        <div class="content">
+          <h3>{{ block.titulo }}</h3>
+          <p>{{ block.conteudo }}</p>
+
+          <div class="action">
+            <button (click)="excluirBlock(block.key)" mat-icon-button>
+              <i class="mdi mdi-delete"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <button
+    [routerLink]="['/dashboard/brainblock/adicionar']"
+    mat-fab
+    color="primary"
+    class="btn-fixed"
+    matTooltip="Adicionar Anotação"
+    [matTooltipPosition]="'left'"
+  >
+    <i class="mdi mdi-plus"></i>
+  </button>
 </section>

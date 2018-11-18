@@ -10,7 +10,7 @@ export class BrainblockService {
   constructor(public db: AngularFireDatabase) {}
 
   getAllBlocks() {
-    this.itemList = this.db.list('blocks');
+    this.itemList = this.db.list('anotacoes');
     return this.itemList.snapshotChanges().map(changes => {
       return changes.map(c => ({
         key: c.payload.key,
