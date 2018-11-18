@@ -1,3 +1,4 @@
+import { BrainblockComponent } from './brainblock/brainblock.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -25,7 +26,8 @@ const routes: Routes = [
   },
   { path: 'dashboard/tasks', component: TasksComponent },
   { path: 'dashboard/eventos', component: EventosComponent },
-  { path: 'dashboard/evento/cadastrar', component: CadastrarEventoComponent }
+  { path: 'dashboard/evento/cadastrar', component: CadastrarEventoComponent },
+  { path: 'dashboard/brainblocks', component: BrainblockComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);
