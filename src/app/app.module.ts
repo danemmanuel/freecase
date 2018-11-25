@@ -1,3 +1,4 @@
+import { LoadingModule } from './shared/loading/loading.module';
 import { BrainblockModule } from './brainblock/brainblock.module';
 import { TasksModule } from './tasks/tasks.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -51,7 +52,8 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     TasksModule,
     EventosModule,
     BrainblockModule,
-    DashboardModule
+    DashboardModule,
+    LoadingModule
   ],
   exports: [RouterModule],
   providers: [LoginComponent],
