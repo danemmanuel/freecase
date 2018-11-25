@@ -85,7 +85,6 @@ export class EventosComponent implements OnInit {
     this.events = [];
     this.eventosService.getAllEvents().subscribe(events => {
       events.forEach(evento => {
-        console.log(evento);
         if (evento.uid === this.myUid) {
           const eventoObj = {
             title: evento.titulo,
@@ -95,7 +94,6 @@ export class EventosComponent implements OnInit {
               key: evento.key
             }
           };
-          console.log(eventoObj);
           this.events.push(eventoObj);
         }
       });
@@ -121,7 +119,6 @@ export class EventosComponent implements OnInit {
   }
 
   showAgendaDia(event) {
-    console.log(event);
     this.showAgenda = true;
     this.modalData = event;
     moment.locale('pt-BR');

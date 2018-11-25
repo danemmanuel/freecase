@@ -39,7 +39,6 @@ export class TasksComponent implements OnInit {
   }
 
   excluirBlock(key) {
-    console.log(key);
     this.itemList.remove(key);
   }
 }

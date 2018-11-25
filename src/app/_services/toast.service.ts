@@ -7,7 +7,6 @@ export class ToastService {
   constructor() {}
 
   showToasst(ee: string) {
-    console.log(ee);
     return 'dsasds';
   }
 }
