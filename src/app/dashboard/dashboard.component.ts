@@ -1,3 +1,4 @@
+import { LoadingService } from './../shared/loading/loading.service';
 import { BrainblockService } from './../brainblock/brainblock.service';
 import { EventosService } from './../eventos/eventos.service';
 import { TasksService } from './../tasks/tasks.service';
@@ -16,7 +17,8 @@ export class DashboardComponent implements OnInit {
     private clientesService: ClientesService,
     private tasksService: TasksService,
     private eventosService: EventosService,
-    private brainblockService: BrainblockService
+    private brainblockService: BrainblockService,
+    private loadingService: LoadingService
   ) {}
 
   public dataUser: User;
