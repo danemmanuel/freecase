@@ -40,12 +40,16 @@ export class ClientesComponent implements OnInit {
   }
 
   getRecord(element) {
-    // console.log(element.$key);
     this.clientesService.moreInfo(element.uid);
   }
   createTable() {
     this.clientesService.getAllClientes().subscribe(clientes => {
-      const tableArr: Cliente[] = clientes;
+      const tableArr: Cliente[] = [];
+      clientes.forEach(cliente => {
+        if (cliente.uid === this.myUid) {
+          tableArr.push(cliente);
+        }
+      });
       this.dataSource = new MatTableDataSource(tableArr);
       this.dataSource.sort = this.sort;
       this.paginator._intl.itemsPerPageLabel = 'Clientes por página';

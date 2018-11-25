@@ -69,7 +69,6 @@ export class LoginComponent implements OnInit {
   }
 
   private updateUserData(email, name, uid, photoURL): void {
-    console.log(uid);
     localStorage.setItem('uid', uid);
     localStorage.setItem('isLoggedIn', 'true');
     const path = `users/${uid}`;

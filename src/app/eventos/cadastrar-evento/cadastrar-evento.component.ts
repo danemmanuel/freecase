@@ -39,7 +39,6 @@ export class CadastrarEventoComponent implements OnInit {
       this.formEvento.value.dataevento = moment(
         this.formEvento.value.dataevento
       ).format('MM-DD-YYYY');
-      console.log(this.formEvento.value.dataevento);
       this.itemList.push({
         uid: this.myUid,
         titulo: this.formEvento.value.titulo,

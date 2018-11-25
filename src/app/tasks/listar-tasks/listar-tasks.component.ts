@@ -36,7 +36,6 @@ export class ListarTasksComponent implements OnInit {
   }
 
   excluirBlock(key) {
-    console.log(key);
     this.itemList.remove(key);
   }
 }

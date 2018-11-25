@@ -33,17 +33,12 @@ export class DetailsClienteComponent implements OnInit {
           this.itemArray.push(y as ListItemClass);
           this.data.name = this.itemArray[0]['name'];
           this.data.telefone = this.itemArray[0]['telefone'];
-
-          console.log(this.itemArray[0]);
         }
       });
     });
   }
 
-  ngOnInit() {
-    console.log(this.id['id']);
-    console.log(this.data);
-  }
+  ngOnInit() {}
 }
 
 export class ListItemClass {
