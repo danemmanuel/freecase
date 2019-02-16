@@ -28,35 +28,45 @@ import { ClientesModule } from './clientes/clientes.module';
 import { EventosModule } from './eventos/eventos.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { BoardComponent } from './board/board.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomesiteComponent,
-    LoginComponent,
-    AsideComponent,
-    TopbarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule,
-    FormsModule,
-    routing,
-    AngularMaterialModule,
-    BrowserAnimationsModule,
-    DataTablesModule,
-    ClientesModule,
-    TasksModule,
-    EventosModule,
-    BrainblockModule,
-    DashboardModule,
-    LoadingModule
-  ],
-  exports: [RouterModule],
-  providers: [LoginComponent],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      HomesiteComponent,
+      LoginComponent,
+      AsideComponent,
+      TopbarComponent,
+      BoardComponent
+   ],
+   imports: [
+      BrowserModule,
+      AngularFireModule.initializeApp(environment.firebase),
+      AngularFireDatabaseModule,
+      AngularFireAuthModule,
+      AngularFireStorageModule,
+      FormsModule,
+      routing,
+      AngularMaterialModule,
+      BrowserAnimationsModule,
+      DataTablesModule,
+      ClientesModule,
+      TasksModule,
+      EventosModule,
+      BrainblockModule,
+      DashboardModule,
+      LoadingModule,
+      HttpClientModule
+   ],
+   exports: [
+      RouterModule
+   ],
+   providers: [
+      LoginComponent
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule {}

@@ -4,4 +4,16 @@
   <app-cadastrar-task></app-cadastrar-task>
 
   <app-listar-tasks></app-listar-tasks>
+
+  <div class="cards">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let board of boards">
+        <div (click)="openBoard(board.id)" class="card rounded">
+          <div class="body">
+            <h4>{{ board.name }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
