@@ -22,32 +22,31 @@
       href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,800"
       rel="stylesheet"
     />
-    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script src="https://api.trello.com/1/client.js?key=7c1d7657d4fea36a03f8b245deeb75d1"></script>
+    <script type="text/javascript">
+      var authenticationSuccess = function() {
+        console.log('Successful authentication');
+      };
+
+      var authenticationFailure = function() {
+        console.log('Failed authentication');
+      };
+
+      window.Trello.authorize({
+        type: 'popup',
+        name: 'Getting Started Applicationn',
+        scope: {
+          read: 'true',
+          write: 'true'
+        },
+        expiration: 'never',
+        success: authenticationSuccess,
+        error: authenticationFailure
+      });
+    </script>
   </head>
   <body>
     <app-root></app-root>
   </body>
-
-  <script type="text/javascript">
-    var authenticationSuccess = function() {
-      console.log('Successful authentication');
-    };
-
-    var authenticationFailure = function() {
-      console.log('Failed authentication');
-    };
-
-    window.Trello.authorize({
-      type: 'popup',
-      name: 'Getting Started Application',
-      scope: {
-        read: 'true',
-        write: 'true'
-      },
-      expiration: 'never',
-      success: authenticationSuccess,
-      error: authenticationFailure
-    });
-  </script>
 </html>
