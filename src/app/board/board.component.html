@@ -1,0 +1,22 @@
+<section class="page_content">
+  <div class="head_content">
+    <h1 class="title">Board</h1>
+    <button class="return_btn" [routerLink]="['/dashboard/clientes']">
+      Voltar
+    </button>
+  </div>
+  <div class="status">
+    <div class="stat afazer">
+      <h5>A Fazer</h5>
+      <p>{{ qtdNotStarted }}</p>
+    </div>
+    <div class="stat fazendo">
+      <h5>Fazendo</h5>
+      <p>{{ qtdProgress }}</p>
+    </div>
+    <div class="stat concluido">
+      <h5>Concluídos</h5>
+      <p>{{ qtdCompleted }}</p>
+    </div>
+  </div>
+</section>

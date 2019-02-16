@@ -1,0 +1,18 @@
+<div class="card" [ngClass]="{ onModal: isEdit }">
+  <div (click)="colapseForm()" class="card-header">
+    <i class="material-icons">{{ icon }}</i>
+  </div>
+  <div class="card-title" (click)="colapseForm()">
+    <h4>{{ title }}</h4>
+    <i
+      *ngIf="!isEdit"
+      [ngClass]="{ colapse: colapse }"
+      class="material-icons pointer icon_colapse"
+      >expand_less</i
+    >
+  </div>
+
+  <div class="card-content" [ngClass]="{ colapse: colapse }">
+    <ng-content></ng-content>
+  </div>
+</div>

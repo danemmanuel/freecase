@@ -1,3 +1,4 @@
+import { BoardComponent } from './board/board.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomesiteComponent } from './homesite/homesite.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
     component: CadastrarClienteComponent
   },
   { path: 'dashboard/tasks', component: TasksComponent },
+  {
+    path: 'dashboard/board/:id',
+    component: BoardComponent
+  },
   { path: 'dashboard/eventos', component: EventosComponent },
   { path: 'dashboard/evento/cadastrar', component: CadastrarEventoComponent },
   { path: 'dashboard/brainblocks', component: BrainblockComponent }

@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CardModule } from '../shared/card/card.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
     AngularMaterialModule,
     RouterModule,
     TasksModule,
-    EventosModule
+    EventosModule,
+    CardModule
   ],
   declarations: [DashboardComponent]
 })
