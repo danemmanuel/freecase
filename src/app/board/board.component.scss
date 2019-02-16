@@ -33,3 +33,32 @@
   border-radius: 100px;
   font-weight: bold;
 }
+.members {
+  & .member {
+    display: flex;
+    align-items: center;
+    margin: 20px 0px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+
+    & .name {
+      flex: 1;
+      display: flex;
+      align-items: center;
+
+      & .curl {
+        display: flex;
+        margin-right: 10px;
+        width: 40px;
+        height: 40px;
+        background: #666ec5;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+    }
+  }
+}
