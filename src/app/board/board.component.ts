@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+  styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
   received: any;
@@ -18,7 +18,8 @@ export class BoardComponent implements OnInit {
   qtdNotStarted = 0;
   qtdProgress = 0;
   qtdCompleted = 0;
-
+  qtdNotStartedMember = 0;
+  memberComplet = [];
   constructor(
     private route: ActivatedRoute,
     private _boardService: BoardService
@@ -65,21 +66,76 @@ export class BoardComponent implements OnInit {
       this.setMembros(this.cards);
     });
   }
-  setMembros(cards: any) {
-    cards.forEach(card => {
-      if (card.idMembers.length > 0) {
-        card.idMembers.forEach(idmember => {
-          this._boardService.getMembro(idmember).subscribe(membro => {
-            card['membro'] = membro;
-          });
-        });
-      }
+  setMembros(cards) {
+    let arrIdMembers = [];
+    const arrIdMemberFiltred = [];
+    arrIdMembers = cards.map(elem => elem.idMembers);
+    arrIdMembers.forEach(arrId => {
+      arrId.forEach(element => {
+        arrIdMemberFiltred.push(element);
+      });
     });
+
+    const uniqIds = this.remove_duplicates_es6(arrIdMemberFiltred);
+
+    uniqIds.forEach(idmember => {
+      this._boardService.getMembro(idmember).subscribe(membro => {
+        membro['qtdNotStarted'] = 0;
+        membro['qtdProgress'] = 0;
+        membro['qtdCompleted'] = 0;
+        membro['cards'] = [];
+        this.members.push(membro);
+      });
+    });
+    setTimeout(() => {
+      this.setStatMember(this.members, cards);
+    }, 3000);
   }
 
-  login() {
-    this._boardService.login().subscribe(l => {
-      console.log(l);
+  setStatMember(membros, cards) {
+    membros.forEach(membro => {
+      cards.forEach(card => {
+        card.idMembers.forEach(idMember => {
+          if (idMember === membro.id) {
+            membro['cards'].push(card);
+          }
+        });
+      });
     });
+    membros.forEach(membro => {
+      membro.cards.forEach(card => {
+        if (card.status.name.toLowerCase().includes('a fazer')) {
+          membro.qtdNotStarted++;
+        } else if (card.status.name.toLowerCase().includes('fazendo')) {
+          membro.qtdProgress++;
+        } else if (card.status.name.toLowerCase().includes('concluído')) {
+          membro.qtdCompleted++;
+        }
+      });
+    });
+
+    console.log(membros);
+    // this.countStat(this.memberComplet);
+  }
+
+  countStat(memberComplet) {
+    console.log(memberComplet);
+    memberComplet.forEach(element => {
+      element.cards.forEach(card => {
+        if (card.status.name.toLowerCase().includes('a fazer')) {
+          element.qtdNotStarted++;
+        } else if (card.status.name.toLowerCase().includes('fazendo')) {
+          element.qtdProgress++;
+        } else if (card.status.name.toLowerCase().includes('faturado')) {
+          element.qtdCompleted++;
+        }
+      });
+    });
+    this.memberComplet = memberComplet;
+  }
+  remove_duplicates_es6(arr) {
+    const s = new Set(arr);
+    const it = s.values();
+    return Array.from(it);
   }
 }
