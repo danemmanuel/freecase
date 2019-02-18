@@ -1,0 +1,27 @@
+.cards_trello {
+  padding: 20px;
+  background: #dee1e5;
+  border-radius: 4px;
+  & .card_trello {
+    background: #ffffff;
+    border-radius: 4px;
+    margin: 10px 0;
+    padding: 15px;
+    display: block;
+    color: #333;
+
+    & .labels {
+      display: flex;
+      margin-bottom: 5px;
+
+      & .label {
+        border-radius: 100px;
+        color: #fff;
+        padding: 0 10px;
+        margin-right: 5px;
+        font-size: 11px;
+        font-weight: bold;
+      }
+    }
+  }
+}

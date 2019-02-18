@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="cards_trello">
+    <a
+      *ngFor="let card of data.cards"
+      class="card_trello"
+      href="{{ card.shortUrl }}"
+      target="_blank"
+    >
+      <div class="labels">
+        <span
+          *ngFor="let label of card.labels"
+          [ngStyle]="{ background: label.color }"
+          class="label"
+          >{{ label.name }}</span
+        >
+      </div>
+      <h4>{{ card.name }}</h4>
+    </a>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fechar</button>
+  <!-- <button *ngIf="data.btnText" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>
+    {{ data.btnText }}
+  </button> -->
+</mat-dialog-actions>
