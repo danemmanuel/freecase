@@ -35,15 +35,15 @@
         </div>
       </div>
       <div class="status">
-        <div class="stat afazer">
+        <div class="stat afazer" (click)="showCards(member, 'qtdNotStarted')">
           <h5>A Fazer</h5>
           <p>{{ member.qtdNotStarted }}</p>
         </div>
-        <div class="stat fazendo">
+        <div class="stat fazendo" (click)="showCards(member, 'qtdProgress')">
           <h5>Fazendo</h5>
           <p>{{ member.qtdProgress }}</p>
         </div>
-        <div class="stat concluido">
+        <div class="stat concluido" (click)="showCards(member, 'qtdCompleted')">
           <h5>Concluídos</h5>
           <p>{{ member.qtdCompleted }}</p>
         </div>

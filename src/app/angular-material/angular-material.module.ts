@@ -13,7 +13,8 @@ import {
   MatRippleModule,
   MatTooltipModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatDialogModule
 } from '@angular/material';
 
 @NgModule({
@@ -31,7 +32,8 @@ import {
     MatRippleModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule
   ],
   exports: [
     CommonModule,
@@ -47,7 +49,8 @@ import {
     MatRippleModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule
   ],
   declarations: []
 })

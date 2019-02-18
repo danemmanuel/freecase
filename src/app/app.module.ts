@@ -31,6 +31,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { HttpClientModule } from '@angular/common/http';
 import { BoardComponent } from './board/board.component';
 import { ChartsModule } from 'ng2-charts';
+import { DialogComponent } from './shared/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ChartsModule } from 'ng2-charts';
     LoginComponent,
     AsideComponent,
     TopbarComponent,
-    BoardComponent
+    BoardComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ import { ChartsModule } from 'ng2-charts';
     HttpClientModule,
     ChartsModule
   ],
+  entryComponents: [DialogComponent],
   exports: [RouterModule],
   providers: [LoginComponent],
   bootstrap: [AppComponent]

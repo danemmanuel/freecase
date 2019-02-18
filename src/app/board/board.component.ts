@@ -1,6 +1,8 @@
 import { BoardService } from './board.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DialogComponent } from '../shared/dialog/dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-board',
@@ -21,6 +23,7 @@ export class BoardComponent implements OnInit {
   qtdNotStartedMember = 0;
   memberComplet = [];
   constructor(
+    public dialog: MatDialog,
     private route: ActivatedRoute,
     private _boardService: BoardService
   ) {
@@ -90,7 +93,7 @@ export class BoardComponent implements OnInit {
   }
 
   async set(uniqIds, cards) {
-    await uniqIds.forEach(async idmember => {
+    uniqIds.forEach(async idmember => {
       const membro = await this._boardService.getMembro(idmember).toPromise();
 
       membro['qtdNotStarted'] = 0;
@@ -99,7 +102,6 @@ export class BoardComponent implements OnInit {
       membro['cards'] = [];
       this.members.push(membro);
       this.setStatMember(membro, cards);
-      await membro;
     });
   }
 
@@ -123,6 +125,44 @@ export class BoardComponent implements OnInit {
         membro.qtdCompleted++;
       }
     });
+  }
+
+  showCards(member, status) {
+    let cards = [];
+    let title;
+    console.log(member);
+    switch (status) {
+      case 'qtdNotStarted':
+        title = 'A Fazer';
+        cards = member.cards.filter((elem, index, arr) =>
+          elem.status.name.toLowerCase().includes('fazer')
+        );
+        break;
+
+      case 'qtdProgress':
+        title = 'Fazendo';
+        cards = member.cards.filter((elem, index, arr) =>
+          elem.status.name.toLowerCase().includes('fazendo')
+        );
+        break;
+      case 'qtdCompleted':
+        title = 'Concluídos';
+        cards = member.cards.filter((elem, index, arr) =>
+          elem.status.name.toLowerCase().includes('concluído')
+        );
+        break;
+
+      default:
+        break;
+    }
+    if (cards.length > 0) {
+      this.dialog.open(DialogComponent, {
+        data: {
+          title: title,
+          cards: cards
+        }
+      });
+    }
   }
 
   remove_duplicates_es6(arr) {
