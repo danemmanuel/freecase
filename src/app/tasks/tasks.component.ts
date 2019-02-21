@@ -53,18 +53,7 @@ export class TasksComponent implements OnInit {
         .getBoards(this.idTrello, this.token)
         .subscribe(retornoBoards => {
           this.boards = retornoBoards;
-          this.tasksServices
-            .getLists(retornoBoards[2].id, this.token)
-            .subscribe(lists => {
-              console.log(lists);
-            });
         });
-    });
-  }
-
-  getPerfils(id) {
-    this.tasksServices.getPerfil(id, this.token).subscribe(perfil => {
-      console.log(perfil['name']);
     });
   }
 
