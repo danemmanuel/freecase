@@ -1,6 +1,8 @@
-<h2 mat-dialog-title>{{ data.title }}</h2>
 <mat-dialog-content class="mat-typography">
   <div class="cards_trello">
+    <div class="title_trello">
+      {{ data.title }}
+    </div>
     <a
       *ngFor="let card of data.cards"
       class="card_trello"
