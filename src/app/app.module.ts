@@ -31,7 +31,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { HttpClientModule } from '@angular/common/http';
 import { BoardComponent } from './board/board.component';
 import { ChartsModule } from 'ng2-charts';
-import { DialogComponent } from './shared/dialog/dialog.component';
+import { DialogComponent } from './board/dialog/dialog.component';
 
 @NgModule({
   declarations: [
