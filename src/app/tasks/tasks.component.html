@@ -10,7 +10,11 @@
       <div class="col-md-4" *ngFor="let board of boards">
         <div
           (click)="openBoard(board.id)"
-          [ngStyle]="{ background: board.prefs.backgroundColor }"
+          [ngStyle]="{
+            background: board.prefs.backgroundColor
+              ? board.prefs.backgroundColor
+              : 'grey'
+          }"
           class="card rounded"
           style="cursor:pointer"
         >

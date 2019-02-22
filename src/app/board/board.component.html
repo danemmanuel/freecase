@@ -14,11 +14,19 @@
       <h5>Fazendo</h5>
       <p>{{ qtdProgress }}</p>
     </div>
+    <div class="stat validacao">
+      <h5>Em Validação</h5>
+      <p>{{ qtdValidacao }}</p>
+    </div>
     <div class="stat concluido">
       <h5>Concluídos</h5>
       <p>{{ qtdCompleted }}</p>
     </div>
   </div>
+  <div
+    id="chartContainer"
+    style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"
+  ></div>
 
   <div class="head_content">
     <h1 class="title">Por usuário</h1>
@@ -42,6 +50,10 @@
         <div class="stat fazendo" (click)="showCards(member, 'qtdProgress')">
           <h5>Fazendo</h5>
           <p>{{ member.qtdProgress }}</p>
+        </div>
+        <div class="stat validacao" (click)="showCards(member, 'qtdValidacao')">
+          <h5>Validação</h5>
+          <p>{{ member.qtdValidacao }}</p>
         </div>
         <div class="stat concluido" (click)="showCards(member, 'qtdCompleted')">
           <h5>Concluídos</h5>

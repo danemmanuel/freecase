@@ -1,8 +1,9 @@
 import { BoardService } from './board.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DialogComponent } from '../shared/dialog/dialog.component';
+import { DialogComponent } from './dialog/dialog.component';
 import { MatDialog } from '@angular/material';
+import * as CanvasJS from 'src/assets/canvasjs.min';
 
 @Component({
   selector: 'app-board',
@@ -20,6 +21,7 @@ export class BoardComponent implements OnInit {
   qtdNotStarted = 0;
   qtdProgress = 0;
   qtdCompleted = 0;
+  qtdValidacao = 0;
   qtdNotStartedMember = 0;
   memberComplet = [];
   constructor(
@@ -70,11 +72,36 @@ export class BoardComponent implements OnInit {
         this.qtdNotStarted++;
       } else if (card['status']['name'].toLowerCase().includes('fazendo')) {
         this.qtdProgress++;
+      } else if (card['status']['name'].toLowerCase().includes('validação')) {
+        this.qtdValidacao++;
       } else if (card['status']['name'].toLowerCase().includes('concluído')) {
         this.qtdCompleted++;
       }
     });
     this.cards = cards;
+    const chart = new CanvasJS.Chart('chartContainer', {
+      theme: 'light2',
+      animationEnabled: true,
+      exportEnabled: true,
+
+      data: [
+        {
+          type: 'pie',
+          showInLegend: true,
+          toolTipContent: '<b>{name}</b>: {y} (#percent%)',
+          indexLabel: '{name} - #percent%',
+          dataPoints: [
+            { y: this.qtdNotStarted, name: 'A Fazer' },
+            { y: this.qtdProgress, name: 'Fazendo' },
+            { y: this.qtdValidacao, name: 'Em Validação' },
+            { y: this.qtdCompleted, name: 'Concluído' }
+          ]
+        }
+      ]
+    });
+
+    chart.render();
+
     this.setMembros(this.cards);
   }
 
@@ -99,6 +126,7 @@ export class BoardComponent implements OnInit {
       membro['qtdNotStarted'] = 0;
       membro['qtdProgress'] = 0;
       membro['qtdCompleted'] = 0;
+      membro['qtdValidacao'] = 0;
       membro['cards'] = [];
       this.members.push(membro);
       this.setStatMember(membro, cards);
@@ -121,6 +149,8 @@ export class BoardComponent implements OnInit {
         membro.qtdNotStarted++;
       } else if (card.status.name.toLowerCase().includes('fazendo')) {
         membro.qtdProgress++;
+      } else if (card.status.name.toLowerCase().includes('validação')) {
+        membro.qtdValidacao++;
       } else if (card.status.name.toLowerCase().includes('concluído')) {
         membro.qtdCompleted++;
       }
@@ -130,7 +160,6 @@ export class BoardComponent implements OnInit {
   showCards(member, status) {
     let cards = [];
     let title;
-    console.log(member);
     switch (status) {
       case 'qtdNotStarted':
         title = 'A Fazer';
@@ -143,6 +172,12 @@ export class BoardComponent implements OnInit {
         title = 'Fazendo';
         cards = member.cards.filter((elem, index, arr) =>
           elem.status.name.toLowerCase().includes('fazendo')
+        );
+        break;
+      case 'qtdValidacao':
+        title = 'Validação';
+        cards = member.cards.filter((elem, index, arr) =>
+          elem.status.name.toLowerCase().includes('validação')
         );
         break;
       case 'qtdCompleted':

@@ -1,6 +1,6 @@
 .cards_trello {
   padding: 20px;
-  background: #dee1e5;
+  background: #cecece;
   border-radius: 4px;
 
   & .title_trello {
@@ -17,6 +17,8 @@
     color: #333;
     box-shadow: 0 1px 0 rgba(9, 45, 66, 0.25);
     transition: 0.3s;
+    min-width: 250px;
+    max-width: 300px;
     &:hover {
       background: #f5f6f7;
       transition: 0.3s;
@@ -26,12 +28,13 @@
       margin-bottom: 5px;
 
       & .label {
-        border-radius: 100px;
+        border-radius: 5px;
         color: #fff;
         padding: 0 10px;
         margin-right: 5px;
         font-size: 11px;
         font-weight: bold;
+        opacity: 0.7;
       }
     }
   }
